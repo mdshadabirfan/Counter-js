@@ -10,14 +10,26 @@ increaseBtn.addEventListener("click", increaseFnc);
 decreaseBtn.addEventListener("click", decreaseFnc);
 resetBtn.addEventListener("click", resetFnc);
 
+
+function getStepValue() {
+  const rawValue = input.value.trim();
+  if (rawValue === "") {
+    input.value = 1;
+    return 1;
+  } else {
+    const value = Number(rawValue);
+    return isNaN(value) ? 1 : value;
+  }
+}
+
 function increaseFnc() {
-  let inputVal = Number(input.value);
+  let inputVal = getStepValue();
   counterVal += inputVal;
   render();
 }
 
 function decreaseFnc() {
-  let inputVal = Number(input.value);
+  let inputVal = getStepValue();
   counterVal -= inputVal;
   render();
 }
